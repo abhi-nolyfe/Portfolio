@@ -20,6 +20,7 @@ const Navbar = () => {
           window.scrollTo(0, 0);
         }}>
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+          <p>Abhi-Nolife</p>
         </Link>
       </div>
 
