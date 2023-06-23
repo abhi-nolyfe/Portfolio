@@ -1,6 +1,7 @@
 import React, { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Decal, Float, OrbitControls, Preload, useTexture } from "@react-three/drei";
+import * as THREE from "three";
 
 import CanvasLoader from "../Loader";
 
@@ -11,18 +12,38 @@ const Ball = (props) => {
   const timeoutRef = useRef(null);
 
   useEffect(() => {
-    const handleInteraction = () => {
+    const handlePointerDown = () => {
       setIsInteracting(true);
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => setIsInteracting(false), 1000);
     };
-    window.addEventListener("mousemove", handleInteraction);
-    return () => window.removeEventListener("mousemove", handleInteraction);
+    const handlePointerUp = () => {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setIsInteracting(false), 1000); // Set isInteracting to false with a delay
+    };
+    window.addEventListener("pointerdown", handlePointerDown);
+    window.addEventListener("pointerup", handlePointerUp);
+    return () => {
+      window.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("pointerup", handlePointerUp);
+    };
   }, []);
 
   useFrame(({ camera }) => {
     if (!isInteracting) {
-      meshRef.current.lookAt(camera.position);
+      // Calculate target rotation
+      const targetRotation = new THREE.Euler().setFromQuaternion(
+        new THREE.Quaternion().setFromRotationMatrix(
+          new THREE.Matrix4().lookAt(
+            meshRef.current.position,
+            camera.position,
+            new THREE.Vector3(0, 1, 0)
+          )
+        ).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI))
+      );
+      // Interpolate between current rotation and target rotation
+      meshRef.current.quaternion.slerp(
+        new THREE.Quaternion().setFromEuler(targetRotation),
+        0.1
+      );
     }
   });
 
