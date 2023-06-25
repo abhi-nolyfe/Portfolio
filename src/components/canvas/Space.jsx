@@ -22,7 +22,7 @@ const Space = ({ isMobile }) => {
       <primitive
         object={spaceBoi.scene}
         scale={isMobile ? 0.7 : 0.9}
-        position={isMobile ? [0, -3, -1] : [0, -3.25, -1.5]}
+        position={isMobile ? [0, -3, -1] : [0, -4, -1.5]}
         rotation={[0, 0.6, 0]}
       />
     </mesh>
