@@ -28,23 +28,25 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link, 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover gap-1">
             <div
               onClick={() => window.open(source_code_link, "_blank")}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:scale-110"
             >
               <img
                 src={github}
                 alt="github"
                 className="w-7 h-7 object-contain"
+                title="Github link"
               />
             </div>
 
             <div
               onClick={() => window.open(live_link, "_blank")}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:scale-110"
             >
               <img
                 src={demo}
                 alt="github"
                 className="w-7 h-7 object-contain"
+                title="Live demo"
               />
             </div>
           </div>
@@ -67,7 +69,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link, 
   )
 }
 
-const Works = () => {
+const Projects = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -98,4 +100,4 @@ const Works = () => {
   )
 }
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Projects, "");
