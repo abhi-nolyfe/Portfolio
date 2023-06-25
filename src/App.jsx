@@ -3,6 +3,7 @@ import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Projects, St
 
 const App = () => {
   const showExperience = true;
+  const showFeedbacks = true;
 
   return (
     <BrowserRouter>
@@ -15,7 +16,7 @@ const App = () => {
         {showExperience && <Experience />}
         <Tech />
         <Projects />
-        <Feedbacks />
+        {showFeedbacks && <Feedbacks />}
         <div className="relative z-0">
           <Contact />
           <StarsCanvas />
