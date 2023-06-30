@@ -44,7 +44,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link, 
             >
               <img
                 src={demo}
-                alt="github"
+                alt="live demo"
                 className="w-7 h-7 object-contain"
                 title="Live demo"
               />
