@@ -1,9 +1,9 @@
 import { BrowserRouter } from "react-router-dom";
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Projects, StarsCanvas } from "./components";
+import { About, Contact, Experience, Feedbacks, Hero, Navbar, Footer, Tech, Projects, StarsCanvas } from "./components";
 
 const App = () => {
-  const showExperience = true;
-  const showFeedbacks = true;
+  const showExperience = false;
+  const showFeedbacks = false;
 
   return (
     <BrowserRouter>
@@ -21,6 +21,7 @@ const App = () => {
           <Contact />
           <StarsCanvas />
         </div>
+        <Footer />
       </div>
     </BrowserRouter>
   )

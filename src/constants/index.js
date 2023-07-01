@@ -23,6 +23,8 @@ import {
     jobit,
     tripguide,
     threejs,
+    github,
+    email,
   } from "../assets";
   
   export const navLinks = [
@@ -41,6 +43,19 @@ import {
     {
       id: "contact",
       title: "Contact",
+    },
+  ];
+
+  export const footerLinks = [
+    {
+      icon: email,
+      url: "mailto:abhi.nolyfe@gmail.com",
+      title: "abhi.nolyfe@gmail.com"
+    },
+    {
+      icon: github,
+      url: "https://github.com/abhi-nolyfe/",
+      title: "Github"
     },
   ];
   
